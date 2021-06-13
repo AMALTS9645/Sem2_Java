@@ -1,41 +1,59 @@
-import java.util.Scanner;
-class SymmetricMatrix{
-   public static void main(String args[]){
-       Scanner input = new Scanner(System.in);
-       System.out.println("Number of rows of Matrix:");
-       int m = input.nextInt();
-       System.out.println("Number of columns of Matrix:");
-       int n = input.nextInt();
-       int  a[][] = new int[m][n];
-       System.out.println("Enter elements of The Matrix:");
-       for(int i =0;i < m;i++){
-           for(int j = 0;j<n;j++){
-               a[i][j] = input.nextInt();
-           }
-       }
-       if(m != n)
-          System.out.println("Matrix is not a Squre matrix");
-       else{
-          int b[][] = new int[n][m];
-          for(int i=0; i < n; i++){
-              for(int j = 0;j < m; j++){
-                  b[i][j] = a[j][i];
-               }
-           }
-          int flag =0;
-          first:
-          for(int i =0; i < n; i++){
-             for(int j = 0; j < m;j++){
-                 if(a[i][j] != b[i][j]){
-                     flag =1;
-                     break first;
-                  }
-              }
-          }
-          if(flag == 1)
-              System.out.println("Matrix is not Symmetric");
-          else
-              System.out.println("Matrix is Symmetric"); 
-       }
-   }
-}
+import java.util.*; 
+ 
+class SymmetricMatrix
+{ 
+public static void main(String args[])  
+{ 
+Scanner s=new Scanner(System.in); 
+int r,c; 
+int count=0; 
+System.out.print("enter number of rows in the matrix : "); 
+r=s.nextInt(); 
+System.out.print("enter number of columns in the matrix : "); 
+c=s.nextInt(); 
+int x[][]=new int[r][c]; 
+int y[][]=new int[r][c]; 
+System.out.println("enter the elements of the matrix : "); 
+for(int i=0;i<r;i++)  
+{ 
+for(int j=0;j<c;j++) 
+{ 
+x[i][j]=s.nextInt(); 
+} 
+} 
+System.out.println("the given matrix is:"); 
+for(int i=0;i<r;i++)  
+{ 
+for(int j=0;j<c;j++)  
+{ 
+System.out.print(x[i][j]+" "); 
+} 
+System.out.println("");  
+} if(r==c) {   
+for(int i=0;i<r;i++) 
+{ 
+for(int j=0;j<c;j++) 
+{ 
+y[i][j]=x[j][i]; 
+} 
+} 
+} 
+System.out.println("transpose of given matrix is : "); 
+for(int i=0;i<r;i++)  
+{ 
+for(int j=0;j<c;j++)  
+{ 
+System.out.print(y[i][j]+" "); 
+} 
+System.out.println("");  
+} 
+for(int i=0;i<r;i++)  for(int j=0;j<c;j++)  if(x[i][j]==y[i][j]) 
+{ 
+count++; 
+} 
+if(count==r*c) 
+System.out.println("yes,the given matrix is symmetric !"); 
+else 
+System.out.println("No,the given matrix is assymetric !"); 
+} 
+} 
